@@ -128,7 +128,7 @@ field extraction for teaching the example; it is **not a new model experiment**.
 The history runner additionally executes the study's 32-event generator across
 both schedules and all six fault profiles, with a clean control for each schedule.
 
-## Real-world debugging, not automatic patch generation
+## Real-world debugging
 
 Two examples illustrate the intended use:
 
