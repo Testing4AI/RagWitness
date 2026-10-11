@@ -1,0 +1,39 @@
+<!doctype html>
+<html lang="en">
+<head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>RAGWitness · Follow an update</title><link rel="stylesheet" href="styles.css"></head>
+<body>
+<header><a href="../README.md" class="brand">RAG<span>Witness</span></a><span class="tag">ANONYMOUS RESEARCH DEMO · OFFLINE</span></header>
+<main>
+<section class="intro"><div><p class="eyebrow">SAME KNOWLEDGE, DIFFERENT STATE</p>
+<h1>The answer looks right.<br><em>Did the update work?</em></h1>
+<p class="lede">A policy fee changes from $10 to $20. The system says it is done.<br>Follow one running RAG instance—and see what an answer can hide.</p></div>
+<aside><strong>One instance. Five events.</strong><p>Update → query → rollback.<br>A later rollback can erase the visible discrepancy, but not its failure witness.</p><small>Illustrative synchronous execution · BM25 · no live LLM</small></aside></section>
+<section class="controls" aria-label="Replay controls">
+<label>Fault profile <select id="scenario"><option value="0">Dropped update</option><option value="1">Orphaned old chunks</option><option value="2">Stale query cache</option><option value="3">Clean execution</option></select></label>
+<div class="buttons"><button id="play" class="primary">▶ Play history</button><button id="next">Next event →</button><button id="reset">Reset</button></div>
+</section>
+<div id="timeline" class="timeline" aria-label="Select completed checkpoint"></div>
+<p id="explanation" class="explanation" aria-live="polite"></p>
+<div class="stages">
+<section class="stage"><h2><span>01</span> History Execution</h2><p class="sub">The same instance, maintained over time</p>
+<div class="document"><span>Prescribed knowledge</span><strong id="source"></strong></div>
+<div class="arrow">↓ acknowledged operation</div>
+<div id="actual" class="statebox"></div>
+<div class="cache"><span>Query cache</span><strong id="cache"></strong></div>
+<div class="answer"><small>Question: Who owns the policy?</small><strong id="answer"></strong><span>Deterministic answer-field illustration</span></div>
+</section>
+<section class="stage"><h2><span>02</span> Consistency Validation</h2><p class="sub">Compare at every completed checkpoint</p>
+<div id="expected" class="statebox reference"></div>
+<div id="verdict" class="verdict"></div>
+<div class="comparison"><div><span>Answer-field comparison</span><strong id="answer-check"></strong></div><div><span>Current state check</span><strong id="state-check"></strong></div><div><span>History failure ledger</span><strong id="ledger-check"></strong></div></div>
+<p class="note">The answer illustration is not RAG-MT execution. The README reports the separate model-based baseline experiment.</p>
+</section>
+<section class="stage"><h2><span>03</span> Witness Reduction</h2><p class="sub">Keep the problem. Remove extra events.</p>
+<div id="witness" class="witness"></div><div id="signature" class="signature"></div>
+<p class="note">Reduced from the full five-event history and replayed by the real reducer. The signature is preserved; its checkpoint can change.</p>
+</section>
+</div>
+<section class="takeaway"><span>WHY THIS MATTERS</span><p id="takeaway"></p></section>
+<footer><p>Replay data: <a href="trace.json">trace.json</a> · Generator: <a href="run_demo.py">run_demo.py</a> · <a href="../docs/REAL_WORLD.md">Historical repair cases</a></p><p>All assets are local. This view replays packaged core execution; it contacts no external service or model.</p></footer>
+</main><script src="data.js"></script><script src="app.js"></script></body></html>

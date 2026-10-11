@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="276" viewBox="0 0 1200 276" role="img" aria-labelledby="title desc">
+<title id="title">RAGWitness: from a continuing RAG system to a replayable failure witness</title><desc id="desc">Execute an update history, compare the maintained state with a fresh reference at completed checkpoints, then reduce the history while preserving the failure.</desc>
+<rect width="1200" height="276" rx="18" fill="#f5f8fa"/>
+<g font-family="Arial, Helvetica, sans-serif" fill="#18313e">
+<rect x="24" y="24" width="358" height="228" rx="12" fill="white" stroke="#dce5e7"/>
+<rect x="420" y="24" width="358" height="228" rx="12" fill="white" stroke="#dce5e7"/>
+<rect x="816" y="24" width="360" height="228" rx="12" fill="white" stroke="#dce5e7"/>
+<g font-size="20" font-weight="700"><text x="44" y="58">01  History Execution</text><text x="440" y="58">02  Consistency Validation</text><text x="836" y="58">03  Witness Reduction</text></g>
+<g font-size="14" fill="#566b77"><text x="44" y="84">One continuing RAG instance</text><text x="440" y="84">Same prescribed knowledge</text><text x="836" y="84">A focused regression test</text></g>
+<rect x="44" y="104" width="318" height="46" rx="7" fill="#e9f6f1"/><text x="63" y="133" font-size="16">Update → query → rollback</text>
+<text x="44" y="180" font-size="16">Source → index → retrieval → answer</text><text x="44" y="222" font-size="14" fill="#087d76">State survives between operations.</text>
+<rect x="440" y="104" width="142" height="46" rx="7" fill="#fff0e9"/><rect x="616" y="104" width="142" height="46" rx="7" fill="#e9f6f1"/><text x="455" y="132" font-size="15">Maintained v1</text><text x="631" y="132" font-size="15">Reference v2</text><text x="591" y="135" font-size="23" fill="#b74937">≠</text>
+<text x="440" y="180" font-size="16">Completed update → mismatch</text><text x="440" y="222" font-size="14" fill="#087d76">Keep failures that later events hide.</text>
+<text x="842" y="151" font-size="39" fill="#087d76" font-weight="700">History → witness</text><text x="836" y="180" font-size="16">Preserve document + layer + mismatch</text><text x="836" y="222" font-size="14" fill="#087d76">Replay to debug and check a repair.</text>
+<g stroke="#087d76" stroke-width="2" fill="none"><path d="M390 137h20m-6-6 6 6-6 6"/><path d="M787 137h20m-6-6 6 6-6 6"/></g>
+</g></svg>
