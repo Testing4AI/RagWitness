@@ -2,8 +2,6 @@
 
 # RAGWitness
 
-### Same knowledge. Different state. A replayable witness.
-
 **Testing Knowledge Updates in Stateful RAG Systems**
 
 [Interactive demo](demo/index.html) · [Quick start](#quick-start) · [Baseline comparison](#how-does-it-compare) · [Evidence guide](docs/EVIDENCE.md) · [Reproduction](docs/REPRODUCING.md)
