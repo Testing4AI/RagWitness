@@ -1,0 +1,483 @@
+{
+  "schema_version": 1,
+  "experiment": "shared-clean-rebuild-oracle-transfer",
+  "framework": "LlamaIndex",
+  "frozen": true,
+  "frozen_at": "2026-09-06T20:35:00+08:00",
+  "repeats": 3,
+  "selection": [
+    "L03",
+    "L07"
+  ],
+  "selection_note": "Cases and histories were fixed before executing the supplemental endpoint oracle. Non-detections and fixed-version residual divergences are retained.",
+  "cases": [
+    {
+      "id": "L03",
+      "title": "async transformation failure, recovery, and identical retry",
+      "mode": "async",
+      "runtime_root": "work/historical-candidates/llama/phase_b/runtime_deps",
+      "source_composition": "Exact upstream pipeline.py from the named revision over upstream llama-index-core snapshot 17b68b822e4520a40db7465adb36769e45310d61; component-level source overlay, not a full checkout.",
+      "public_evidence": [
+        "https://github.com/run-llama/llama_index/pull/19849",
+        "https://github.com/run-llama/llama_index/pull/19868"
+      ],
+      "arms": {
+        "parent": {
+          "revision": "24f942089d3ca179e20337e6aefbfe5ce7f40f68",
+          "source_root": "work/historical-candidates/llama/sources/async_transform_pre",
+          "affected_file": "llama_index/core/ingestion/pipeline.py",
+          "source_sha256": "5ccf4ef3cc1e5b7e16d07576f1bf9197a8532664c0bd975b3bc574a98d835df5"
+        },
+        "fix": {
+          "revision": "1692239ed778174c8f632aafc9f803e91ced31b3",
+          "source_root": "work/historical-candidates/llama/sources/async_transform_fix",
+          "affected_file": "llama_index/core/ingestion/pipeline.py",
+          "source_sha256": "3caeb464a02832ab3f6c4f799f2642fdfe4b2b26ad8abd82497b88eb3fb6dbba"
+        }
+      },
+      "initial": [
+        {
+          "id": "policy",
+          "text": "Refunds are accepted for fourteen days.",
+          "metadata": {
+            "kind": "policy",
+            "revision": 1
+          }
+        },
+        {
+          "id": "handbook",
+          "text": "The employee handbook is edition one.",
+          "metadata": {
+            "kind": "handbook",
+            "revision": 1
+          }
+        },
+        {
+          "id": "obsolete",
+          "text": "This migration notice is obsolete.",
+          "metadata": {
+            "kind": "notice",
+            "revision": 1
+          }
+        }
+      ],
+      "history": [
+        {
+          "action": "put",
+          "document": {
+            "id": "handbook",
+            "text": "The employee handbook is edition two.",
+            "metadata": {
+              "kind": "handbook",
+              "revision": 2
+            }
+          }
+        },
+        {
+          "action": "put",
+          "document": {
+            "id": "guide",
+            "text": "The benefits guide starts with enrollment.",
+            "metadata": {
+              "kind": "guide",
+              "revision": 1
+            }
+          }
+        },
+        {
+          "action": "delete",
+          "id": "obsolete"
+        },
+        {
+          "action": "put",
+          "document": {
+            "id": "policy",
+            "text": "Refunds are accepted for eighteen days.",
+            "metadata": {
+              "kind": "policy",
+              "revision": 2
+            }
+          }
+        },
+        {
+          "action": "query",
+          "text": "refund period",
+          "top_k": 3
+        },
+        {
+          "action": "fault_on"
+        },
+        {
+          "action": "put",
+          "allow_error": true,
+          "document": {
+            "id": "policy",
+            "text": "Refunds are accepted for twenty-one days.",
+            "metadata": {
+              "kind": "policy",
+              "revision": 3
+            }
+          }
+        },
+        {
+          "action": "fault_off"
+        },
+        {
+          "action": "put",
+          "document": {
+            "id": "policy",
+            "text": "Refunds are accepted for twenty-one days.",
+            "metadata": {
+              "kind": "policy",
+              "revision": 3
+            }
+          }
+        },
+        {
+          "action": "put",
+          "document": {
+            "id": "guide",
+            "text": "The benefits guide includes enrollment and claims.",
+            "metadata": {
+              "kind": "guide",
+              "revision": 2
+            }
+          }
+        },
+        {
+          "action": "query",
+          "text": "benefits and refund period",
+          "top_k": 3
+        }
+      ],
+      "control_initial": [
+        {
+          "id": "policy",
+          "text": "Refunds are accepted for fourteen days.",
+          "metadata": {
+            "kind": "policy",
+            "revision": 1
+          }
+        },
+        {
+          "id": "handbook",
+          "text": "The employee handbook is edition one.",
+          "metadata": {
+            "kind": "handbook",
+            "revision": 1
+          }
+        },
+        {
+          "id": "obsolete",
+          "text": "This migration notice is obsolete.",
+          "metadata": {
+            "kind": "notice",
+            "revision": 1
+          }
+        }
+      ],
+      "control_history": [
+        {
+          "action": "put",
+          "document": {
+            "id": "handbook",
+            "text": "The employee handbook is edition two.",
+            "metadata": {
+              "kind": "handbook",
+              "revision": 2
+            }
+          }
+        },
+        {
+          "action": "put",
+          "document": {
+            "id": "guide",
+            "text": "The benefits guide starts with enrollment.",
+            "metadata": {
+              "kind": "guide",
+              "revision": 1
+            }
+          }
+        },
+        {
+          "action": "delete",
+          "id": "obsolete"
+        },
+        {
+          "action": "put",
+          "document": {
+            "id": "policy",
+            "text": "Refunds are accepted for eighteen days.",
+            "metadata": {
+              "kind": "policy",
+              "revision": 2
+            }
+          }
+        },
+        {
+          "action": "put",
+          "document": {
+            "id": "policy",
+            "text": "Refunds are accepted for twenty-one days.",
+            "metadata": {
+              "kind": "policy",
+              "revision": 3
+            }
+          }
+        },
+        {
+          "action": "put",
+          "document": {
+            "id": "guide",
+            "text": "The benefits guide includes enrollment and claims.",
+            "metadata": {
+              "kind": "guide",
+              "revision": 2
+            }
+          }
+        },
+        {
+          "action": "query",
+          "text": "benefits and refund period",
+          "top_k": 3
+        }
+      ]
+    },
+    {
+      "id": "L07",
+      "title": "metadata-only updates through ingestion de-duplication",
+      "mode": "sync",
+      "runtime_root": "work/historical-candidates/llama/phase_b/runtime_deps",
+      "source_composition": "Exact upstream schema.py from the named revision over the llama-index-core 0.12.27 release wheel; component-level source overlay, not a full checkout.",
+      "public_evidence": [
+        "https://github.com/run-llama/llama_index/issues/17871",
+        "https://github.com/run-llama/llama_index/pull/18303"
+      ],
+      "arms": {
+        "parent": {
+          "revision": "eadc9c6eafa43f155e1da2b8f21606a88f08f3c7",
+          "source_root": "work/historical-candidates/llama/phase_b/metadata_pre",
+          "affected_file": "llama_index/core/schema.py",
+          "source_sha256": "1c88a06d0502f0dcc9a7c3a64f37e55b725129cb9bd1e00d177fc69b867cd9eb"
+        },
+        "fix": {
+          "revision": "5884f14f7a3d1a63ca860aebc20967de6e4531e4",
+          "source_root": "work/historical-candidates/llama/phase_b/metadata_fix",
+          "affected_file": "llama_index/core/schema.py",
+          "source_sha256": "74e8494449b3880ace5fc3f966ef24aa964a0f3a0503164bd347effa3cf81c66"
+        }
+      },
+      "initial": [
+        {
+          "id": "profile",
+          "text": "The service owner is listed in this profile.",
+          "metadata": {
+            "owner": "team-alpha",
+            "revision": 1
+          }
+        },
+        {
+          "id": "handbook",
+          "text": "Operational handbook edition one.",
+          "metadata": {
+            "section": "operations",
+            "revision": 1
+          }
+        },
+        {
+          "id": "obsolete",
+          "text": "Legacy ownership notice.",
+          "metadata": {
+            "section": "legacy",
+            "revision": 1
+          }
+        }
+      ],
+      "history": [
+        {
+          "action": "put",
+          "document": {
+            "id": "handbook",
+            "text": "Operational handbook edition two.",
+            "metadata": {
+              "section": "operations",
+              "revision": 2
+            }
+          }
+        },
+        {
+          "action": "put",
+          "document": {
+            "id": "guide",
+            "text": "Escalation guide edition one.",
+            "metadata": {
+              "section": "support",
+              "revision": 1
+            }
+          }
+        },
+        {
+          "action": "delete",
+          "id": "obsolete"
+        },
+        {
+          "action": "put",
+          "document": {
+            "id": "profile",
+            "text": "The service owner is listed in this profile.",
+            "metadata": {
+              "owner": "team-beta",
+              "revision": 2
+            }
+          }
+        },
+        {
+          "action": "put",
+          "document": {
+            "id": "guide",
+            "text": "Escalation guide edition two.",
+            "metadata": {
+              "section": "support",
+              "revision": 2
+            }
+          }
+        },
+        {
+          "action": "query",
+          "text": "service owner escalation",
+          "top_k": 3
+        },
+        {
+          "action": "put",
+          "document": {
+            "id": "profile",
+            "text": "The service owner is listed in this profile.",
+            "metadata": {
+              "owner": "team-gamma",
+              "revision": 3
+            }
+          }
+        },
+        {
+          "action": "put",
+          "document": {
+            "id": "handbook",
+            "text": "Operational handbook edition three.",
+            "metadata": {
+              "section": "operations",
+              "revision": 3
+            }
+          }
+        },
+        {
+          "action": "query",
+          "text": "current service owner",
+          "top_k": 3
+        }
+      ],
+      "control_initial": [
+        {
+          "id": "profile",
+          "text": "The service owner is team alpha.",
+          "metadata": {
+            "owner": "team-alpha",
+            "revision": 1
+          }
+        },
+        {
+          "id": "handbook",
+          "text": "Operational handbook edition one.",
+          "metadata": {
+            "section": "operations",
+            "revision": 1
+          }
+        },
+        {
+          "id": "obsolete",
+          "text": "Legacy ownership notice.",
+          "metadata": {
+            "section": "legacy",
+            "revision": 1
+          }
+        }
+      ],
+      "control_history": [
+        {
+          "action": "put",
+          "document": {
+            "id": "handbook",
+            "text": "Operational handbook edition two.",
+            "metadata": {
+              "section": "operations",
+              "revision": 2
+            }
+          }
+        },
+        {
+          "action": "put",
+          "document": {
+            "id": "guide",
+            "text": "Escalation guide edition one.",
+            "metadata": {
+              "section": "support",
+              "revision": 1
+            }
+          }
+        },
+        {
+          "action": "delete",
+          "id": "obsolete"
+        },
+        {
+          "action": "put",
+          "document": {
+            "id": "profile",
+            "text": "The service owner is team beta.",
+            "metadata": {
+              "owner": "team-beta",
+              "revision": 2
+            }
+          }
+        },
+        {
+          "action": "put",
+          "document": {
+            "id": "guide",
+            "text": "Escalation guide edition two.",
+            "metadata": {
+              "section": "support",
+              "revision": 2
+            }
+          }
+        },
+        {
+          "action": "put",
+          "document": {
+            "id": "profile",
+            "text": "The service owner is team gamma.",
+            "metadata": {
+              "owner": "team-gamma",
+              "revision": 3
+            }
+          }
+        },
+        {
+          "action": "put",
+          "document": {
+            "id": "handbook",
+            "text": "Operational handbook edition three.",
+            "metadata": {
+              "section": "operations",
+              "revision": 3
+            }
+          }
+        },
+        {
+          "action": "query",
+          "text": "current service owner",
+          "top_k": 3
+        }
+      ]
+    }
+  ]
+}

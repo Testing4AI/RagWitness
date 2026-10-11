@@ -1,0 +1,22 @@
+{
+  "study": "Matched observation layers on frozen Chroma continuation histories",
+  "version": "v1",
+  "kind": "derived enhancement; no new execution or model calls",
+  "source": "experiments/rag_mt_update_20261002/continuation",
+  "cohort": "All 50 frozen Chroma/Contriever histories, k=5: five cases, two schedules, four seeded profiles plus clean. Retain every condition, including nondetections.",
+  "primary_unit": "case/schedule/fault history condition; model rows share the same execution and are not independent histories",
+  "observation_budget": "All 32 completed checkpoints and all four pre-existing fixed questions at every checkpoint. Endpoint comparison uses the same four questions at checkpoint 32.",
+  "evidence_predicate": "Ordered sequences of (doc_id, version, SHA256(chunk text)) differ between recorded actual and clean-reference hits. Ignore physical chunk IDs and similarity scores; retain order and multiplicity. A history flags if any checkpoint/question differs.",
+  "state_predicate": "Inherit the frozen RAGWitness combined checkpoint signatures. Additional pure evidence probes are reported separately, not retroactively added to its frozen result. State inspection has additional access to runtime representations, not an equal-cost or equal-access black-box baseline.",
+  "answer_predicate": "Recompute the frozen RAG-MT answer-MR verdicts per model from source-gated score<3 tests, including its inherited abstention policy. All model-test keys must join one-to-one to evidence probes; no rescoring or new target calls.",
+  "secondary_diagnostics": [
+    "By fault profile and scheduling strategy",
+    "Paired history and checkpoint overlap, plus first flagged checkpoint",
+    "Ordered text-only context comparison; diagnostic only, not primary evidence observer",
+    "Examples of evidence/state failures with no answer-MR alert at the same checkpoint",
+    "Exact Table 13/Fig. 5 source equivalence check on the separate observation-matrix cohort"
+  ],
+  "clean_reporting": "Report pure evidence/state flags and semantic answer-MR alerts separately. An answer-MR alert during correct maintenance is not automatically an independently adjudicated maintenance false positive.",
+  "nonclaims": "No claim of production prevalence, new bug discovery, equal inspection cost, guaranteed state superiority over all query evidence, independent 6400 trials, or new Qdrant/RAG-MT execution.",
+  "analysis_status": "Protocol fixed before computing the new evidence observer. The underlying state and answer results were already known; this is not prospective outcome-blind preregistration."
+}

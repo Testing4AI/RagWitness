@@ -1,0 +1,513 @@
+{
+  "rows": [
+    {
+      "checkpoint_checks": [
+        {
+          "complete_chunk_set_equal": true,
+          "position": 1,
+          "source_equal": true
+        },
+        {
+          "complete_chunk_set_equal": true,
+          "position": 2,
+          "source_equal": true
+        },
+        {
+          "complete_chunk_set_equal": true,
+          "position": 3,
+          "source_equal": true
+        },
+        {
+          "complete_chunk_set_equal": true,
+          "position": 4,
+          "source_equal": true
+        },
+        {
+          "complete_chunk_set_equal": true,
+          "position": 5,
+          "source_equal": true
+        },
+        {
+          "complete_chunk_set_equal": true,
+          "position": 6,
+          "source_equal": true
+        },
+        {
+          "complete_chunk_set_equal": true,
+          "position": 7,
+          "source_equal": true
+        },
+        {
+          "complete_chunk_set_equal": true,
+          "position": 8,
+          "source_equal": true
+        },
+        {
+          "complete_chunk_set_equal": true,
+          "position": 9,
+          "source_equal": true
+        },
+        {
+          "complete_chunk_set_equal": true,
+          "position": 10,
+          "source_equal": true
+        },
+        {
+          "complete_chunk_set_equal": true,
+          "position": 11,
+          "source_equal": true
+        },
+        {
+          "complete_chunk_set_equal": true,
+          "position": 12,
+          "source_equal": true
+        },
+        {
+          "complete_chunk_set_equal": true,
+          "position": 13,
+          "source_equal": true
+        },
+        {
+          "complete_chunk_set_equal": true,
+          "position": 14,
+          "source_equal": true
+        },
+        {
+          "complete_chunk_set_equal": true,
+          "position": 15,
+          "source_equal": true
+        },
+        {
+          "complete_chunk_set_equal": true,
+          "position": 16,
+          "source_equal": true
+        },
+        {
+          "complete_chunk_set_equal": true,
+          "position": 17,
+          "source_equal": true
+        },
+        {
+          "complete_chunk_set_equal": true,
+          "position": 18,
+          "source_equal": true
+        },
+        {
+          "complete_chunk_set_equal": true,
+          "position": 19,
+          "source_equal": true
+        },
+        {
+          "complete_chunk_set_equal": true,
+          "position": 20,
+          "source_equal": true
+        },
+        {
+          "complete_chunk_set_equal": true,
+          "position": 21,
+          "source_equal": true
+        },
+        {
+          "complete_chunk_set_equal": true,
+          "position": 22,
+          "source_equal": true
+        },
+        {
+          "complete_chunk_set_equal": true,
+          "position": 23,
+          "source_equal": true
+        },
+        {
+          "complete_chunk_set_equal": true,
+          "position": 24,
+          "source_equal": true
+        },
+        {
+          "complete_chunk_set_equal": true,
+          "position": 25,
+          "source_equal": true
+        },
+        {
+          "complete_chunk_set_equal": true,
+          "position": 26,
+          "source_equal": true
+        },
+        {
+          "complete_chunk_set_equal": true,
+          "position": 27,
+          "source_equal": true
+        },
+        {
+          "complete_chunk_set_equal": true,
+          "position": 28,
+          "source_equal": true
+        },
+        {
+          "complete_chunk_set_equal": true,
+          "position": 29,
+          "source_equal": true
+        },
+        {
+          "complete_chunk_set_equal": true,
+          "position": 30,
+          "source_equal": true
+        },
+        {
+          "complete_chunk_set_equal": true,
+          "position": 31,
+          "source_equal": true
+        },
+        {
+          "complete_chunk_set_equal": true,
+          "position": 32,
+          "source_equal": true
+        }
+      ],
+      "conclusion": "Seeded omission does not manifest: identical-ID rewrites or rejected stale updates; not an observed-state false negative.",
+      "history_id": "confirm-001:operation_random:901:orphan_old_chunks",
+      "original_projection_verified": true,
+      "positive_diagnostic_control": {
+        "detected": true,
+        "event_count": 1,
+        "signatures": [
+          {
+            "document_id": "confirmation-doc-001",
+            "layer": "index",
+            "mismatch_kind": "obsolete_version"
+          }
+        ]
+      },
+      "repeat_detected": [
+        false,
+        false,
+        false
+      ],
+      "seed": 901,
+      "update_outcomes": {
+        "document appended without removing prior chunks": 2,
+        "stale version ignored": 6
+      },
+      "updates": [
+        {
+          "current_version": 1,
+          "detail": "document appended without removing prior chunks",
+          "document_id": "confirmation-doc-001",
+          "incoming_version": 1,
+          "position": 1,
+          "same_payload": true
+        },
+        {
+          "current_version": 1,
+          "detail": "document appended without removing prior chunks",
+          "document_id": "confirmation-doc-011",
+          "incoming_version": 1,
+          "position": 10,
+          "same_payload": true
+        },
+        {
+          "current_version": 3,
+          "detail": "stale version ignored",
+          "document_id": "confirmation-doc-001",
+          "incoming_version": 2,
+          "position": 16,
+          "same_payload": false
+        },
+        {
+          "current_version": 3,
+          "detail": "stale version ignored",
+          "document_id": "confirmation-doc-038",
+          "incoming_version": 2,
+          "position": 20,
+          "same_payload": false
+        },
+        {
+          "current_version": 3,
+          "detail": "stale version ignored",
+          "document_id": "confirmation-doc-038",
+          "incoming_version": 1,
+          "position": 25,
+          "same_payload": false
+        },
+        {
+          "current_version": 3,
+          "detail": "stale version ignored",
+          "document_id": "confirmation-doc-011",
+          "incoming_version": 2,
+          "position": 27,
+          "same_payload": false
+        },
+        {
+          "current_version": 3,
+          "detail": "stale version ignored",
+          "document_id": "confirmation-doc-002",
+          "incoming_version": 1,
+          "position": 30,
+          "same_payload": false
+        },
+        {
+          "current_version": 3,
+          "detail": "stale version ignored",
+          "document_id": "confirmation-doc-002",
+          "incoming_version": 2,
+          "position": 31,
+          "same_payload": false
+        }
+      ]
+    },
+    {
+      "checkpoint_checks": [
+        {
+          "complete_chunk_set_equal": true,
+          "position": 1,
+          "source_equal": true
+        },
+        {
+          "complete_chunk_set_equal": true,
+          "position": 2,
+          "source_equal": true
+        },
+        {
+          "complete_chunk_set_equal": true,
+          "position": 3,
+          "source_equal": true
+        },
+        {
+          "complete_chunk_set_equal": true,
+          "position": 4,
+          "source_equal": true
+        },
+        {
+          "complete_chunk_set_equal": true,
+          "position": 5,
+          "source_equal": true
+        },
+        {
+          "complete_chunk_set_equal": true,
+          "position": 6,
+          "source_equal": true
+        },
+        {
+          "complete_chunk_set_equal": true,
+          "position": 7,
+          "source_equal": true
+        },
+        {
+          "complete_chunk_set_equal": true,
+          "position": 8,
+          "source_equal": true
+        },
+        {
+          "complete_chunk_set_equal": true,
+          "position": 9,
+          "source_equal": true
+        },
+        {
+          "complete_chunk_set_equal": true,
+          "position": 10,
+          "source_equal": true
+        },
+        {
+          "complete_chunk_set_equal": true,
+          "position": 11,
+          "source_equal": true
+        },
+        {
+          "complete_chunk_set_equal": true,
+          "position": 12,
+          "source_equal": true
+        },
+        {
+          "complete_chunk_set_equal": true,
+          "position": 13,
+          "source_equal": true
+        },
+        {
+          "complete_chunk_set_equal": true,
+          "position": 14,
+          "source_equal": true
+        },
+        {
+          "complete_chunk_set_equal": true,
+          "position": 15,
+          "source_equal": true
+        },
+        {
+          "complete_chunk_set_equal": true,
+          "position": 16,
+          "source_equal": true
+        },
+        {
+          "complete_chunk_set_equal": true,
+          "position": 17,
+          "source_equal": true
+        },
+        {
+          "complete_chunk_set_equal": true,
+          "position": 18,
+          "source_equal": true
+        },
+        {
+          "complete_chunk_set_equal": true,
+          "position": 19,
+          "source_equal": true
+        },
+        {
+          "complete_chunk_set_equal": true,
+          "position": 20,
+          "source_equal": true
+        },
+        {
+          "complete_chunk_set_equal": true,
+          "position": 21,
+          "source_equal": true
+        },
+        {
+          "complete_chunk_set_equal": true,
+          "position": 22,
+          "source_equal": true
+        },
+        {
+          "complete_chunk_set_equal": true,
+          "position": 23,
+          "source_equal": true
+        },
+        {
+          "complete_chunk_set_equal": true,
+          "position": 24,
+          "source_equal": true
+        },
+        {
+          "complete_chunk_set_equal": true,
+          "position": 25,
+          "source_equal": true
+        },
+        {
+          "complete_chunk_set_equal": true,
+          "position": 26,
+          "source_equal": true
+        },
+        {
+          "complete_chunk_set_equal": true,
+          "position": 27,
+          "source_equal": true
+        },
+        {
+          "complete_chunk_set_equal": true,
+          "position": 28,
+          "source_equal": true
+        },
+        {
+          "complete_chunk_set_equal": true,
+          "position": 29,
+          "source_equal": true
+        },
+        {
+          "complete_chunk_set_equal": true,
+          "position": 30,
+          "source_equal": true
+        },
+        {
+          "complete_chunk_set_equal": true,
+          "position": 31,
+          "source_equal": true
+        },
+        {
+          "complete_chunk_set_equal": true,
+          "position": 32,
+          "source_equal": true
+        }
+      ],
+      "conclusion": "Seeded omission does not manifest: identical-ID rewrites or rejected stale updates; not an observed-state false negative.",
+      "history_id": "confirm-009:operation_random:903:orphan_old_chunks",
+      "original_projection_verified": true,
+      "positive_diagnostic_control": {
+        "detected": true,
+        "event_count": 1,
+        "signatures": [
+          {
+            "document_id": "confirmation-doc-046",
+            "layer": "index",
+            "mismatch_kind": "obsolete_version"
+          }
+        ]
+      },
+      "repeat_detected": [
+        false,
+        false,
+        false
+      ],
+      "seed": 903,
+      "update_outcomes": {
+        "document appended without removing prior chunks": 2,
+        "stale version ignored": 6
+      },
+      "updates": [
+        {
+          "current_version": 1,
+          "detail": "document appended without removing prior chunks",
+          "document_id": "confirmation-doc-046",
+          "incoming_version": 1,
+          "position": 3,
+          "same_payload": true
+        },
+        {
+          "current_version": 3,
+          "detail": "stale version ignored",
+          "document_id": "confirmation-doc-010",
+          "incoming_version": 1,
+          "position": 16,
+          "same_payload": false
+        },
+        {
+          "current_version": 3,
+          "detail": "stale version ignored",
+          "document_id": "confirmation-doc-009",
+          "incoming_version": 1,
+          "position": 18,
+          "same_payload": false
+        },
+        {
+          "current_version": 3,
+          "detail": "stale version ignored",
+          "document_id": "confirmation-doc-046",
+          "incoming_version": 2,
+          "position": 19,
+          "same_payload": false
+        },
+        {
+          "current_version": 3,
+          "detail": "stale version ignored",
+          "document_id": "confirmation-doc-009",
+          "incoming_version": 2,
+          "position": 21,
+          "same_payload": false
+        },
+        {
+          "current_version": 3,
+          "detail": "stale version ignored",
+          "document_id": "confirmation-doc-019",
+          "incoming_version": 2,
+          "position": 26,
+          "same_payload": false
+        },
+        {
+          "current_version": 1,
+          "detail": "document appended without removing prior chunks",
+          "document_id": "confirmation-doc-019",
+          "incoming_version": 1,
+          "position": 30,
+          "same_payload": true
+        },
+        {
+          "current_version": 3,
+          "detail": "stale version ignored",
+          "document_id": "confirmation-doc-010",
+          "incoming_version": 2,
+          "position": 31,
+          "same_payload": false
+        }
+      ]
+    }
+  ],
+  "status": "passed"
+}

@@ -1,0 +1,1897 @@
+{
+  "adapter_cost": {
+    "execution_seconds": 0.00944795785471797,
+    "nonblank_noncomment_lines": 386
+  },
+  "case": "L07",
+  "case_title": "metadata-only updates through ingestion de-duplication",
+  "control_runs": [
+    {
+      "detected": false,
+      "errors": [],
+      "event_count": 8,
+      "events": [
+        {
+          "action": "put",
+          "document": {
+            "id": "handbook",
+            "metadata": {
+              "revision": 2,
+              "section": "operations"
+            },
+            "text": "Operational handbook edition two."
+          }
+        },
+        {
+          "action": "put",
+          "document": {
+            "id": "guide",
+            "metadata": {
+              "revision": 1,
+              "section": "support"
+            },
+            "text": "Escalation guide edition one."
+          }
+        },
+        {
+          "action": "delete",
+          "id": "obsolete"
+        },
+        {
+          "action": "put",
+          "document": {
+            "id": "profile",
+            "metadata": {
+              "owner": "team-beta",
+              "revision": 2
+            },
+            "text": "The service owner is team beta."
+          }
+        },
+        {
+          "action": "put",
+          "document": {
+            "id": "guide",
+            "metadata": {
+              "revision": 2,
+              "section": "support"
+            },
+            "text": "Escalation guide edition two."
+          }
+        },
+        {
+          "action": "put",
+          "document": {
+            "id": "profile",
+            "metadata": {
+              "owner": "team-gamma",
+              "revision": 3
+            },
+            "text": "The service owner is team gamma."
+          }
+        },
+        {
+          "action": "put",
+          "document": {
+            "id": "handbook",
+            "metadata": {
+              "revision": 3,
+              "section": "operations"
+            },
+            "text": "Operational handbook edition three."
+          }
+        },
+        {
+          "action": "query",
+          "text": "current service owner",
+          "top_k": 3
+        }
+      ],
+      "expected": {
+        "docstore": [
+          {
+            "id": "guide",
+            "metadata": {
+              "revision": 2,
+              "section": "support"
+            },
+            "text": "Escalation guide edition two."
+          },
+          {
+            "id": "handbook",
+            "metadata": {
+              "revision": 3,
+              "section": "operations"
+            },
+            "text": "Operational handbook edition three."
+          },
+          {
+            "id": "profile",
+            "metadata": {
+              "owner": "team-gamma",
+              "revision": 3
+            },
+            "text": "The service owner is team gamma."
+          }
+        ],
+        "retrieval": [
+          {
+            "id": "probe:guide",
+            "matches": [
+              "guide",
+              "profile",
+              "handbook"
+            ]
+          },
+          {
+            "id": "probe:handbook",
+            "matches": [
+              "handbook",
+              "profile",
+              "guide"
+            ]
+          },
+          {
+            "id": "probe:profile",
+            "matches": [
+              "profile",
+              "handbook",
+              "guide"
+            ]
+          }
+        ],
+        "vector_store": [
+          {
+            "embedding": [
+              -0.080621157559,
+              0.11906290872,
+              -0.707674894414,
+              0.781871383959
+            ],
+            "id": "guide",
+            "metadata": {
+              "revision": 2,
+              "section": "support"
+            }
+          },
+          {
+            "embedding": [
+              0.652540213348,
+              -0.635232714386,
+              -0.420769785862,
+              -0.392364979114
+            ],
+            "id": "handbook",
+            "metadata": {
+              "revision": 3,
+              "section": "operations"
+            }
+          },
+          {
+            "embedding": [
+              0.766248159056,
+              0.337244608285,
+              -0.951462334476,
+              -0.371635931863
+            ],
+            "id": "profile",
+            "metadata": {
+              "owner": "team-gamma",
+              "revision": 3
+            }
+          }
+        ]
+      },
+      "observed": {
+        "docstore": [
+          {
+            "id": "guide",
+            "metadata": {
+              "revision": 2,
+              "section": "support"
+            },
+            "text": "Escalation guide edition two."
+          },
+          {
+            "id": "handbook",
+            "metadata": {
+              "revision": 3,
+              "section": "operations"
+            },
+            "text": "Operational handbook edition three."
+          },
+          {
+            "id": "profile",
+            "metadata": {
+              "owner": "team-gamma",
+              "revision": 3
+            },
+            "text": "The service owner is team gamma."
+          }
+        ],
+        "retrieval": [
+          {
+            "id": "probe:guide",
+            "matches": [
+              "guide",
+              "profile",
+              "handbook"
+            ]
+          },
+          {
+            "id": "probe:handbook",
+            "matches": [
+              "handbook",
+              "profile",
+              "guide"
+            ]
+          },
+          {
+            "id": "probe:profile",
+            "matches": [
+              "profile",
+              "handbook",
+              "guide"
+            ]
+          }
+        ],
+        "vector_store": [
+          {
+            "embedding": [
+              -0.080621157559,
+              0.11906290872,
+              -0.707674894414,
+              0.781871383959
+            ],
+            "id": "guide",
+            "metadata": {
+              "revision": 2,
+              "section": "support"
+            }
+          },
+          {
+            "embedding": [
+              0.652540213348,
+              -0.635232714386,
+              -0.420769785862,
+              -0.392364979114
+            ],
+            "id": "handbook",
+            "metadata": {
+              "revision": 3,
+              "section": "operations"
+            }
+          },
+          {
+            "embedding": [
+              0.766248159056,
+              0.337244608285,
+              -0.951462334476,
+              -0.371635931863
+            ],
+            "id": "profile",
+            "metadata": {
+              "owner": "team-gamma",
+              "revision": 3
+            }
+          }
+        ]
+      },
+      "repeat": 0,
+      "seconds": 0.001270707929506898,
+      "signatures": [],
+      "terminal_documents": [
+        {
+          "id": "guide",
+          "metadata": {
+            "revision": 2,
+            "section": "support"
+          },
+          "text": "Escalation guide edition two."
+        },
+        {
+          "id": "handbook",
+          "metadata": {
+            "revision": 3,
+            "section": "operations"
+          },
+          "text": "Operational handbook edition three."
+        },
+        {
+          "id": "profile",
+          "metadata": {
+            "owner": "team-gamma",
+            "revision": 3
+          },
+          "text": "The service owner is team gamma."
+        }
+      ],
+      "valid": true,
+      "write_attempt_count": 7
+    },
+    {
+      "detected": false,
+      "errors": [],
+      "event_count": 8,
+      "events": [
+        {
+          "action": "put",
+          "document": {
+            "id": "handbook",
+            "metadata": {
+              "revision": 2,
+              "section": "operations"
+            },
+            "text": "Operational handbook edition two."
+          }
+        },
+        {
+          "action": "put",
+          "document": {
+            "id": "guide",
+            "metadata": {
+              "revision": 1,
+              "section": "support"
+            },
+            "text": "Escalation guide edition one."
+          }
+        },
+        {
+          "action": "delete",
+          "id": "obsolete"
+        },
+        {
+          "action": "put",
+          "document": {
+            "id": "profile",
+            "metadata": {
+              "owner": "team-beta",
+              "revision": 2
+            },
+            "text": "The service owner is team beta."
+          }
+        },
+        {
+          "action": "put",
+          "document": {
+            "id": "guide",
+            "metadata": {
+              "revision": 2,
+              "section": "support"
+            },
+            "text": "Escalation guide edition two."
+          }
+        },
+        {
+          "action": "put",
+          "document": {
+            "id": "profile",
+            "metadata": {
+              "owner": "team-gamma",
+              "revision": 3
+            },
+            "text": "The service owner is team gamma."
+          }
+        },
+        {
+          "action": "put",
+          "document": {
+            "id": "handbook",
+            "metadata": {
+              "revision": 3,
+              "section": "operations"
+            },
+            "text": "Operational handbook edition three."
+          }
+        },
+        {
+          "action": "query",
+          "text": "current service owner",
+          "top_k": 3
+        }
+      ],
+      "expected": {
+        "docstore": [
+          {
+            "id": "guide",
+            "metadata": {
+              "revision": 2,
+              "section": "support"
+            },
+            "text": "Escalation guide edition two."
+          },
+          {
+            "id": "handbook",
+            "metadata": {
+              "revision": 3,
+              "section": "operations"
+            },
+            "text": "Operational handbook edition three."
+          },
+          {
+            "id": "profile",
+            "metadata": {
+              "owner": "team-gamma",
+              "revision": 3
+            },
+            "text": "The service owner is team gamma."
+          }
+        ],
+        "retrieval": [
+          {
+            "id": "probe:guide",
+            "matches": [
+              "guide",
+              "profile",
+              "handbook"
+            ]
+          },
+          {
+            "id": "probe:handbook",
+            "matches": [
+              "handbook",
+              "profile",
+              "guide"
+            ]
+          },
+          {
+            "id": "probe:profile",
+            "matches": [
+              "profile",
+              "handbook",
+              "guide"
+            ]
+          }
+        ],
+        "vector_store": [
+          {
+            "embedding": [
+              -0.080621157559,
+              0.11906290872,
+              -0.707674894414,
+              0.781871383959
+            ],
+            "id": "guide",
+            "metadata": {
+              "revision": 2,
+              "section": "support"
+            }
+          },
+          {
+            "embedding": [
+              0.652540213348,
+              -0.635232714386,
+              -0.420769785862,
+              -0.392364979114
+            ],
+            "id": "handbook",
+            "metadata": {
+              "revision": 3,
+              "section": "operations"
+            }
+          },
+          {
+            "embedding": [
+              0.766248159056,
+              0.337244608285,
+              -0.951462334476,
+              -0.371635931863
+            ],
+            "id": "profile",
+            "metadata": {
+              "owner": "team-gamma",
+              "revision": 3
+            }
+          }
+        ]
+      },
+      "observed": {
+        "docstore": [
+          {
+            "id": "guide",
+            "metadata": {
+              "revision": 2,
+              "section": "support"
+            },
+            "text": "Escalation guide edition two."
+          },
+          {
+            "id": "handbook",
+            "metadata": {
+              "revision": 3,
+              "section": "operations"
+            },
+            "text": "Operational handbook edition three."
+          },
+          {
+            "id": "profile",
+            "metadata": {
+              "owner": "team-gamma",
+              "revision": 3
+            },
+            "text": "The service owner is team gamma."
+          }
+        ],
+        "retrieval": [
+          {
+            "id": "probe:guide",
+            "matches": [
+              "guide",
+              "profile",
+              "handbook"
+            ]
+          },
+          {
+            "id": "probe:handbook",
+            "matches": [
+              "handbook",
+              "profile",
+              "guide"
+            ]
+          },
+          {
+            "id": "probe:profile",
+            "matches": [
+              "profile",
+              "handbook",
+              "guide"
+            ]
+          }
+        ],
+        "vector_store": [
+          {
+            "embedding": [
+              -0.080621157559,
+              0.11906290872,
+              -0.707674894414,
+              0.781871383959
+            ],
+            "id": "guide",
+            "metadata": {
+              "revision": 2,
+              "section": "support"
+            }
+          },
+          {
+            "embedding": [
+              0.652540213348,
+              -0.635232714386,
+              -0.420769785862,
+              -0.392364979114
+            ],
+            "id": "handbook",
+            "metadata": {
+              "revision": 3,
+              "section": "operations"
+            }
+          },
+          {
+            "embedding": [
+              0.766248159056,
+              0.337244608285,
+              -0.951462334476,
+              -0.371635931863
+            ],
+            "id": "profile",
+            "metadata": {
+              "owner": "team-gamma",
+              "revision": 3
+            }
+          }
+        ]
+      },
+      "repeat": 1,
+      "seconds": 0.0012555001303553581,
+      "signatures": [],
+      "terminal_documents": [
+        {
+          "id": "guide",
+          "metadata": {
+            "revision": 2,
+            "section": "support"
+          },
+          "text": "Escalation guide edition two."
+        },
+        {
+          "id": "handbook",
+          "metadata": {
+            "revision": 3,
+            "section": "operations"
+          },
+          "text": "Operational handbook edition three."
+        },
+        {
+          "id": "profile",
+          "metadata": {
+            "owner": "team-gamma",
+            "revision": 3
+          },
+          "text": "The service owner is team gamma."
+        }
+      ],
+      "valid": true,
+      "write_attempt_count": 7
+    },
+    {
+      "detected": false,
+      "errors": [],
+      "event_count": 8,
+      "events": [
+        {
+          "action": "put",
+          "document": {
+            "id": "handbook",
+            "metadata": {
+              "revision": 2,
+              "section": "operations"
+            },
+            "text": "Operational handbook edition two."
+          }
+        },
+        {
+          "action": "put",
+          "document": {
+            "id": "guide",
+            "metadata": {
+              "revision": 1,
+              "section": "support"
+            },
+            "text": "Escalation guide edition one."
+          }
+        },
+        {
+          "action": "delete",
+          "id": "obsolete"
+        },
+        {
+          "action": "put",
+          "document": {
+            "id": "profile",
+            "metadata": {
+              "owner": "team-beta",
+              "revision": 2
+            },
+            "text": "The service owner is team beta."
+          }
+        },
+        {
+          "action": "put",
+          "document": {
+            "id": "guide",
+            "metadata": {
+              "revision": 2,
+              "section": "support"
+            },
+            "text": "Escalation guide edition two."
+          }
+        },
+        {
+          "action": "put",
+          "document": {
+            "id": "profile",
+            "metadata": {
+              "owner": "team-gamma",
+              "revision": 3
+            },
+            "text": "The service owner is team gamma."
+          }
+        },
+        {
+          "action": "put",
+          "document": {
+            "id": "handbook",
+            "metadata": {
+              "revision": 3,
+              "section": "operations"
+            },
+            "text": "Operational handbook edition three."
+          }
+        },
+        {
+          "action": "query",
+          "text": "current service owner",
+          "top_k": 3
+        }
+      ],
+      "expected": {
+        "docstore": [
+          {
+            "id": "guide",
+            "metadata": {
+              "revision": 2,
+              "section": "support"
+            },
+            "text": "Escalation guide edition two."
+          },
+          {
+            "id": "handbook",
+            "metadata": {
+              "revision": 3,
+              "section": "operations"
+            },
+            "text": "Operational handbook edition three."
+          },
+          {
+            "id": "profile",
+            "metadata": {
+              "owner": "team-gamma",
+              "revision": 3
+            },
+            "text": "The service owner is team gamma."
+          }
+        ],
+        "retrieval": [
+          {
+            "id": "probe:guide",
+            "matches": [
+              "guide",
+              "profile",
+              "handbook"
+            ]
+          },
+          {
+            "id": "probe:handbook",
+            "matches": [
+              "handbook",
+              "profile",
+              "guide"
+            ]
+          },
+          {
+            "id": "probe:profile",
+            "matches": [
+              "profile",
+              "handbook",
+              "guide"
+            ]
+          }
+        ],
+        "vector_store": [
+          {
+            "embedding": [
+              -0.080621157559,
+              0.11906290872,
+              -0.707674894414,
+              0.781871383959
+            ],
+            "id": "guide",
+            "metadata": {
+              "revision": 2,
+              "section": "support"
+            }
+          },
+          {
+            "embedding": [
+              0.652540213348,
+              -0.635232714386,
+              -0.420769785862,
+              -0.392364979114
+            ],
+            "id": "handbook",
+            "metadata": {
+              "revision": 3,
+              "section": "operations"
+            }
+          },
+          {
+            "embedding": [
+              0.766248159056,
+              0.337244608285,
+              -0.951462334476,
+              -0.371635931863
+            ],
+            "id": "profile",
+            "metadata": {
+              "owner": "team-gamma",
+              "revision": 3
+            }
+          }
+        ]
+      },
+      "observed": {
+        "docstore": [
+          {
+            "id": "guide",
+            "metadata": {
+              "revision": 2,
+              "section": "support"
+            },
+            "text": "Escalation guide edition two."
+          },
+          {
+            "id": "handbook",
+            "metadata": {
+              "revision": 3,
+              "section": "operations"
+            },
+            "text": "Operational handbook edition three."
+          },
+          {
+            "id": "profile",
+            "metadata": {
+              "owner": "team-gamma",
+              "revision": 3
+            },
+            "text": "The service owner is team gamma."
+          }
+        ],
+        "retrieval": [
+          {
+            "id": "probe:guide",
+            "matches": [
+              "guide",
+              "profile",
+              "handbook"
+            ]
+          },
+          {
+            "id": "probe:handbook",
+            "matches": [
+              "handbook",
+              "profile",
+              "guide"
+            ]
+          },
+          {
+            "id": "probe:profile",
+            "matches": [
+              "profile",
+              "handbook",
+              "guide"
+            ]
+          }
+        ],
+        "vector_store": [
+          {
+            "embedding": [
+              -0.080621157559,
+              0.11906290872,
+              -0.707674894414,
+              0.781871383959
+            ],
+            "id": "guide",
+            "metadata": {
+              "revision": 2,
+              "section": "support"
+            }
+          },
+          {
+            "embedding": [
+              0.652540213348,
+              -0.635232714386,
+              -0.420769785862,
+              -0.392364979114
+            ],
+            "id": "handbook",
+            "metadata": {
+              "revision": 3,
+              "section": "operations"
+            }
+          },
+          {
+            "embedding": [
+              0.766248159056,
+              0.337244608285,
+              -0.951462334476,
+              -0.371635931863
+            ],
+            "id": "profile",
+            "metadata": {
+              "owner": "team-gamma",
+              "revision": 3
+            }
+          }
+        ]
+      },
+      "repeat": 2,
+      "seconds": 0.0012547499500215054,
+      "signatures": [],
+      "terminal_documents": [
+        {
+          "id": "guide",
+          "metadata": {
+            "revision": 2,
+            "section": "support"
+          },
+          "text": "Escalation guide edition two."
+        },
+        {
+          "id": "handbook",
+          "metadata": {
+            "revision": 3,
+            "section": "operations"
+          },
+          "text": "Operational handbook edition three."
+        },
+        {
+          "id": "profile",
+          "metadata": {
+            "owner": "team-gamma",
+            "revision": 3
+          },
+          "text": "The service owner is team gamma."
+        }
+      ],
+      "valid": true,
+      "write_attempt_count": 7
+    }
+  ],
+  "environment": {
+    "external_services": [],
+    "platform": "macOS-26.6.1-arm64-arm-64bit-Mach-O",
+    "python": "3.13.12",
+    "target_llm": null
+  },
+  "experiment": "shared-clean-rebuild-oracle-transfer",
+  "framework": "LlamaIndex",
+  "license_spdx": "MIT",
+  "main_runs": [
+    {
+      "detected": false,
+      "errors": [],
+      "event_count": 9,
+      "events": [
+        {
+          "action": "put",
+          "document": {
+            "id": "handbook",
+            "metadata": {
+              "revision": 2,
+              "section": "operations"
+            },
+            "text": "Operational handbook edition two."
+          }
+        },
+        {
+          "action": "put",
+          "document": {
+            "id": "guide",
+            "metadata": {
+              "revision": 1,
+              "section": "support"
+            },
+            "text": "Escalation guide edition one."
+          }
+        },
+        {
+          "action": "delete",
+          "id": "obsolete"
+        },
+        {
+          "action": "put",
+          "document": {
+            "id": "profile",
+            "metadata": {
+              "owner": "team-beta",
+              "revision": 2
+            },
+            "text": "The service owner is listed in this profile."
+          }
+        },
+        {
+          "action": "put",
+          "document": {
+            "id": "guide",
+            "metadata": {
+              "revision": 2,
+              "section": "support"
+            },
+            "text": "Escalation guide edition two."
+          }
+        },
+        {
+          "action": "query",
+          "text": "service owner escalation",
+          "top_k": 3
+        },
+        {
+          "action": "put",
+          "document": {
+            "id": "profile",
+            "metadata": {
+              "owner": "team-gamma",
+              "revision": 3
+            },
+            "text": "The service owner is listed in this profile."
+          }
+        },
+        {
+          "action": "put",
+          "document": {
+            "id": "handbook",
+            "metadata": {
+              "revision": 3,
+              "section": "operations"
+            },
+            "text": "Operational handbook edition three."
+          }
+        },
+        {
+          "action": "query",
+          "text": "current service owner",
+          "top_k": 3
+        }
+      ],
+      "expected": {
+        "docstore": [
+          {
+            "id": "guide",
+            "metadata": {
+              "revision": 2,
+              "section": "support"
+            },
+            "text": "Escalation guide edition two."
+          },
+          {
+            "id": "handbook",
+            "metadata": {
+              "revision": 3,
+              "section": "operations"
+            },
+            "text": "Operational handbook edition three."
+          },
+          {
+            "id": "profile",
+            "metadata": {
+              "owner": "team-gamma",
+              "revision": 3
+            },
+            "text": "The service owner is listed in this profile."
+          }
+        ],
+        "retrieval": [
+          {
+            "id": "probe:guide",
+            "matches": [
+              "guide",
+              "handbook",
+              "profile"
+            ]
+          },
+          {
+            "id": "probe:handbook",
+            "matches": [
+              "handbook",
+              "guide",
+              "profile"
+            ]
+          },
+          {
+            "id": "probe:profile",
+            "matches": [
+              "profile",
+              "handbook",
+              "guide"
+            ]
+          }
+        ],
+        "vector_store": [
+          {
+            "embedding": [
+              -0.080621157559,
+              0.11906290872,
+              -0.707674894414,
+              0.781871383959
+            ],
+            "id": "guide",
+            "metadata": {
+              "revision": 2,
+              "section": "support"
+            }
+          },
+          {
+            "embedding": [
+              -0.376420676563,
+              0.169700767186,
+              0.877297149477,
+              -0.233264539678
+            ],
+            "id": "profile",
+            "metadata": {
+              "owner": "team-gamma",
+              "revision": 3
+            }
+          },
+          {
+            "embedding": [
+              0.652540213348,
+              -0.635232714386,
+              -0.420769785862,
+              -0.392364979114
+            ],
+            "id": "handbook",
+            "metadata": {
+              "revision": 3,
+              "section": "operations"
+            }
+          }
+        ]
+      },
+      "observed": {
+        "docstore": [
+          {
+            "id": "guide",
+            "metadata": {
+              "revision": 2,
+              "section": "support"
+            },
+            "text": "Escalation guide edition two."
+          },
+          {
+            "id": "handbook",
+            "metadata": {
+              "revision": 3,
+              "section": "operations"
+            },
+            "text": "Operational handbook edition three."
+          },
+          {
+            "id": "profile",
+            "metadata": {
+              "owner": "team-gamma",
+              "revision": 3
+            },
+            "text": "The service owner is listed in this profile."
+          }
+        ],
+        "retrieval": [
+          {
+            "id": "probe:guide",
+            "matches": [
+              "guide",
+              "handbook",
+              "profile"
+            ]
+          },
+          {
+            "id": "probe:handbook",
+            "matches": [
+              "handbook",
+              "guide",
+              "profile"
+            ]
+          },
+          {
+            "id": "probe:profile",
+            "matches": [
+              "profile",
+              "handbook",
+              "guide"
+            ]
+          }
+        ],
+        "vector_store": [
+          {
+            "embedding": [
+              -0.080621157559,
+              0.11906290872,
+              -0.707674894414,
+              0.781871383959
+            ],
+            "id": "guide",
+            "metadata": {
+              "revision": 2,
+              "section": "support"
+            }
+          },
+          {
+            "embedding": [
+              -0.376420676563,
+              0.169700767186,
+              0.877297149477,
+              -0.233264539678
+            ],
+            "id": "profile",
+            "metadata": {
+              "owner": "team-gamma",
+              "revision": 3
+            }
+          },
+          {
+            "embedding": [
+              0.652540213348,
+              -0.635232714386,
+              -0.420769785862,
+              -0.392364979114
+            ],
+            "id": "handbook",
+            "metadata": {
+              "revision": 3,
+              "section": "operations"
+            }
+          }
+        ]
+      },
+      "repeat": 0,
+      "seconds": 0.0025516669265925884,
+      "signatures": [],
+      "terminal_documents": [
+        {
+          "id": "guide",
+          "metadata": {
+            "revision": 2,
+            "section": "support"
+          },
+          "text": "Escalation guide edition two."
+        },
+        {
+          "id": "handbook",
+          "metadata": {
+            "revision": 3,
+            "section": "operations"
+          },
+          "text": "Operational handbook edition three."
+        },
+        {
+          "id": "profile",
+          "metadata": {
+            "owner": "team-gamma",
+            "revision": 3
+          },
+          "text": "The service owner is listed in this profile."
+        }
+      ],
+      "valid": true,
+      "write_attempt_count": 7
+    },
+    {
+      "detected": false,
+      "errors": [],
+      "event_count": 9,
+      "events": [
+        {
+          "action": "put",
+          "document": {
+            "id": "handbook",
+            "metadata": {
+              "revision": 2,
+              "section": "operations"
+            },
+            "text": "Operational handbook edition two."
+          }
+        },
+        {
+          "action": "put",
+          "document": {
+            "id": "guide",
+            "metadata": {
+              "revision": 1,
+              "section": "support"
+            },
+            "text": "Escalation guide edition one."
+          }
+        },
+        {
+          "action": "delete",
+          "id": "obsolete"
+        },
+        {
+          "action": "put",
+          "document": {
+            "id": "profile",
+            "metadata": {
+              "owner": "team-beta",
+              "revision": 2
+            },
+            "text": "The service owner is listed in this profile."
+          }
+        },
+        {
+          "action": "put",
+          "document": {
+            "id": "guide",
+            "metadata": {
+              "revision": 2,
+              "section": "support"
+            },
+            "text": "Escalation guide edition two."
+          }
+        },
+        {
+          "action": "query",
+          "text": "service owner escalation",
+          "top_k": 3
+        },
+        {
+          "action": "put",
+          "document": {
+            "id": "profile",
+            "metadata": {
+              "owner": "team-gamma",
+              "revision": 3
+            },
+            "text": "The service owner is listed in this profile."
+          }
+        },
+        {
+          "action": "put",
+          "document": {
+            "id": "handbook",
+            "metadata": {
+              "revision": 3,
+              "section": "operations"
+            },
+            "text": "Operational handbook edition three."
+          }
+        },
+        {
+          "action": "query",
+          "text": "current service owner",
+          "top_k": 3
+        }
+      ],
+      "expected": {
+        "docstore": [
+          {
+            "id": "guide",
+            "metadata": {
+              "revision": 2,
+              "section": "support"
+            },
+            "text": "Escalation guide edition two."
+          },
+          {
+            "id": "handbook",
+            "metadata": {
+              "revision": 3,
+              "section": "operations"
+            },
+            "text": "Operational handbook edition three."
+          },
+          {
+            "id": "profile",
+            "metadata": {
+              "owner": "team-gamma",
+              "revision": 3
+            },
+            "text": "The service owner is listed in this profile."
+          }
+        ],
+        "retrieval": [
+          {
+            "id": "probe:guide",
+            "matches": [
+              "guide",
+              "handbook",
+              "profile"
+            ]
+          },
+          {
+            "id": "probe:handbook",
+            "matches": [
+              "handbook",
+              "guide",
+              "profile"
+            ]
+          },
+          {
+            "id": "probe:profile",
+            "matches": [
+              "profile",
+              "handbook",
+              "guide"
+            ]
+          }
+        ],
+        "vector_store": [
+          {
+            "embedding": [
+              -0.080621157559,
+              0.11906290872,
+              -0.707674894414,
+              0.781871383959
+            ],
+            "id": "guide",
+            "metadata": {
+              "revision": 2,
+              "section": "support"
+            }
+          },
+          {
+            "embedding": [
+              -0.376420676563,
+              0.169700767186,
+              0.877297149477,
+              -0.233264539678
+            ],
+            "id": "profile",
+            "metadata": {
+              "owner": "team-gamma",
+              "revision": 3
+            }
+          },
+          {
+            "embedding": [
+              0.652540213348,
+              -0.635232714386,
+              -0.420769785862,
+              -0.392364979114
+            ],
+            "id": "handbook",
+            "metadata": {
+              "revision": 3,
+              "section": "operations"
+            }
+          }
+        ]
+      },
+      "observed": {
+        "docstore": [
+          {
+            "id": "guide",
+            "metadata": {
+              "revision": 2,
+              "section": "support"
+            },
+            "text": "Escalation guide edition two."
+          },
+          {
+            "id": "handbook",
+            "metadata": {
+              "revision": 3,
+              "section": "operations"
+            },
+            "text": "Operational handbook edition three."
+          },
+          {
+            "id": "profile",
+            "metadata": {
+              "owner": "team-gamma",
+              "revision": 3
+            },
+            "text": "The service owner is listed in this profile."
+          }
+        ],
+        "retrieval": [
+          {
+            "id": "probe:guide",
+            "matches": [
+              "guide",
+              "handbook",
+              "profile"
+            ]
+          },
+          {
+            "id": "probe:handbook",
+            "matches": [
+              "handbook",
+              "guide",
+              "profile"
+            ]
+          },
+          {
+            "id": "probe:profile",
+            "matches": [
+              "profile",
+              "handbook",
+              "guide"
+            ]
+          }
+        ],
+        "vector_store": [
+          {
+            "embedding": [
+              -0.080621157559,
+              0.11906290872,
+              -0.707674894414,
+              0.781871383959
+            ],
+            "id": "guide",
+            "metadata": {
+              "revision": 2,
+              "section": "support"
+            }
+          },
+          {
+            "embedding": [
+              -0.376420676563,
+              0.169700767186,
+              0.877297149477,
+              -0.233264539678
+            ],
+            "id": "profile",
+            "metadata": {
+              "owner": "team-gamma",
+              "revision": 3
+            }
+          },
+          {
+            "embedding": [
+              0.652540213348,
+              -0.635232714386,
+              -0.420769785862,
+              -0.392364979114
+            ],
+            "id": "handbook",
+            "metadata": {
+              "revision": 3,
+              "section": "operations"
+            }
+          }
+        ]
+      },
+      "repeat": 1,
+      "seconds": 0.0017962921410799026,
+      "signatures": [],
+      "terminal_documents": [
+        {
+          "id": "guide",
+          "metadata": {
+            "revision": 2,
+            "section": "support"
+          },
+          "text": "Escalation guide edition two."
+        },
+        {
+          "id": "handbook",
+          "metadata": {
+            "revision": 3,
+            "section": "operations"
+          },
+          "text": "Operational handbook edition three."
+        },
+        {
+          "id": "profile",
+          "metadata": {
+            "owner": "team-gamma",
+            "revision": 3
+          },
+          "text": "The service owner is listed in this profile."
+        }
+      ],
+      "valid": true,
+      "write_attempt_count": 7
+    },
+    {
+      "detected": false,
+      "errors": [],
+      "event_count": 9,
+      "events": [
+        {
+          "action": "put",
+          "document": {
+            "id": "handbook",
+            "metadata": {
+              "revision": 2,
+              "section": "operations"
+            },
+            "text": "Operational handbook edition two."
+          }
+        },
+        {
+          "action": "put",
+          "document": {
+            "id": "guide",
+            "metadata": {
+              "revision": 1,
+              "section": "support"
+            },
+            "text": "Escalation guide edition one."
+          }
+        },
+        {
+          "action": "delete",
+          "id": "obsolete"
+        },
+        {
+          "action": "put",
+          "document": {
+            "id": "profile",
+            "metadata": {
+              "owner": "team-beta",
+              "revision": 2
+            },
+            "text": "The service owner is listed in this profile."
+          }
+        },
+        {
+          "action": "put",
+          "document": {
+            "id": "guide",
+            "metadata": {
+              "revision": 2,
+              "section": "support"
+            },
+            "text": "Escalation guide edition two."
+          }
+        },
+        {
+          "action": "query",
+          "text": "service owner escalation",
+          "top_k": 3
+        },
+        {
+          "action": "put",
+          "document": {
+            "id": "profile",
+            "metadata": {
+              "owner": "team-gamma",
+              "revision": 3
+            },
+            "text": "The service owner is listed in this profile."
+          }
+        },
+        {
+          "action": "put",
+          "document": {
+            "id": "handbook",
+            "metadata": {
+              "revision": 3,
+              "section": "operations"
+            },
+            "text": "Operational handbook edition three."
+          }
+        },
+        {
+          "action": "query",
+          "text": "current service owner",
+          "top_k": 3
+        }
+      ],
+      "expected": {
+        "docstore": [
+          {
+            "id": "guide",
+            "metadata": {
+              "revision": 2,
+              "section": "support"
+            },
+            "text": "Escalation guide edition two."
+          },
+          {
+            "id": "handbook",
+            "metadata": {
+              "revision": 3,
+              "section": "operations"
+            },
+            "text": "Operational handbook edition three."
+          },
+          {
+            "id": "profile",
+            "metadata": {
+              "owner": "team-gamma",
+              "revision": 3
+            },
+            "text": "The service owner is listed in this profile."
+          }
+        ],
+        "retrieval": [
+          {
+            "id": "probe:guide",
+            "matches": [
+              "guide",
+              "handbook",
+              "profile"
+            ]
+          },
+          {
+            "id": "probe:handbook",
+            "matches": [
+              "handbook",
+              "guide",
+              "profile"
+            ]
+          },
+          {
+            "id": "probe:profile",
+            "matches": [
+              "profile",
+              "handbook",
+              "guide"
+            ]
+          }
+        ],
+        "vector_store": [
+          {
+            "embedding": [
+              -0.080621157559,
+              0.11906290872,
+              -0.707674894414,
+              0.781871383959
+            ],
+            "id": "guide",
+            "metadata": {
+              "revision": 2,
+              "section": "support"
+            }
+          },
+          {
+            "embedding": [
+              -0.376420676563,
+              0.169700767186,
+              0.877297149477,
+              -0.233264539678
+            ],
+            "id": "profile",
+            "metadata": {
+              "owner": "team-gamma",
+              "revision": 3
+            }
+          },
+          {
+            "embedding": [
+              0.652540213348,
+              -0.635232714386,
+              -0.420769785862,
+              -0.392364979114
+            ],
+            "id": "handbook",
+            "metadata": {
+              "revision": 3,
+              "section": "operations"
+            }
+          }
+        ]
+      },
+      "observed": {
+        "docstore": [
+          {
+            "id": "guide",
+            "metadata": {
+              "revision": 2,
+              "section": "support"
+            },
+            "text": "Escalation guide edition two."
+          },
+          {
+            "id": "handbook",
+            "metadata": {
+              "revision": 3,
+              "section": "operations"
+            },
+            "text": "Operational handbook edition three."
+          },
+          {
+            "id": "profile",
+            "metadata": {
+              "owner": "team-gamma",
+              "revision": 3
+            },
+            "text": "The service owner is listed in this profile."
+          }
+        ],
+        "retrieval": [
+          {
+            "id": "probe:guide",
+            "matches": [
+              "guide",
+              "handbook",
+              "profile"
+            ]
+          },
+          {
+            "id": "probe:handbook",
+            "matches": [
+              "handbook",
+              "guide",
+              "profile"
+            ]
+          },
+          {
+            "id": "probe:profile",
+            "matches": [
+              "profile",
+              "handbook",
+              "guide"
+            ]
+          }
+        ],
+        "vector_store": [
+          {
+            "embedding": [
+              -0.080621157559,
+              0.11906290872,
+              -0.707674894414,
+              0.781871383959
+            ],
+            "id": "guide",
+            "metadata": {
+              "revision": 2,
+              "section": "support"
+            }
+          },
+          {
+            "embedding": [
+              -0.376420676563,
+              0.169700767186,
+              0.877297149477,
+              -0.233264539678
+            ],
+            "id": "profile",
+            "metadata": {
+              "owner": "team-gamma",
+              "revision": 3
+            }
+          },
+          {
+            "embedding": [
+              0.652540213348,
+              -0.635232714386,
+              -0.420769785862,
+              -0.392364979114
+            ],
+            "id": "handbook",
+            "metadata": {
+              "revision": 3,
+              "section": "operations"
+            }
+          }
+        ]
+      },
+      "repeat": 2,
+      "seconds": 0.0013067920226603746,
+      "signatures": [],
+      "terminal_documents": [
+        {
+          "id": "guide",
+          "metadata": {
+            "revision": 2,
+            "section": "support"
+          },
+          "text": "Escalation guide edition two."
+        },
+        {
+          "id": "handbook",
+          "metadata": {
+            "revision": 3,
+            "section": "operations"
+          },
+          "text": "Operational handbook edition three."
+        },
+        {
+          "id": "profile",
+          "metadata": {
+            "owner": "team-gamma",
+            "revision": 3
+          },
+          "text": "The service owner is listed in this profile."
+        }
+      ],
+      "valid": true,
+      "write_attempt_count": 7
+    }
+  ],
+  "manifest": {
+    "frozen": true,
+    "path": "/artifact/results/supplemental/llama_manifest.json",
+    "sha256": "4e22e0f0f48b860b24ea308533ad2228b360fd4c6758426ee7f5bd52359caaa6"
+  },
+  "oracle": {
+    "case_specific_expected_values": false,
+    "completion_contract": "every fault-interval write is successfully redelivered for the same logical id after recovery",
+    "implementation": "ragmetatest.lifecycle_harness.run_history",
+    "implementation_sha256": "dfb8c69dbd35983052969385d2cb3e5e759cf5c511efa22a534d85fb5bd74313",
+    "observed_layers": [
+      "docstore",
+      "vector_store",
+      "retrieval"
+    ],
+    "relation": "incremental terminal snapshot equals clean rebuild from reduced terminal source"
+  },
+  "public_evidence": [
+    "https://github.com/run-llama/llama_index/issues/17871",
+    "https://github.com/run-llama/llama_index/pull/18303"
+  ],
+  "repository": "https://github.com/run-llama/llama_index",
+  "revision": "5884f14f7a3d1a63ca860aebc20967de6e4531e4",
+  "role": "fix",
+  "schema_version": 1,
+  "shrink": null,
+  "source_composition": "Exact upstream schema.py from the named revision over the llama-index-core 0.12.27 release wheel; component-level source overlay, not a full checkout.",
+  "source_provenance": {
+    "revision": "5884f14f7a3d1a63ca860aebc20967de6e4531e4",
+    "role": "fix",
+    "source_file": "/artifact/work/historical-candidates/llama/phase_b/metadata_fix/llama_index/core/schema.py",
+    "source_root": "/artifact/work/historical-candidates/llama/phase_b/metadata_fix",
+    "source_sha256": "74e8494449b3880ace5fc3f966ef24aa964a0f3a0503164bd347effa3cf81c66"
+  },
+  "summary": {
+    "controls_detected": 0,
+    "controls_valid": 3,
+    "main_detected": 0,
+    "main_valid": 3,
+    "minimal_valid": null,
+    "shrink_attempted": false,
+    "signature_preserved": null
+  }
+}

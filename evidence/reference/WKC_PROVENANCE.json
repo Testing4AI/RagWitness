@@ -1,0 +1,9 @@
+{
+  "name": "When Knowledge Changes: Metamorphic Testing of RAG Systems with Mutations",
+  "repository": "https://github.com/dbr7/RAG-metamorphic-mutation.git",
+  "commit": "597fd6582b8ae1a0dbcf4ec3b863293579346187",
+  "retrieved_on": "2026-09-02",
+  "local_path": "third_party/RAG-metamorphic-mutation",
+  "note": "The upstream checkout is ignored; use scripts/fetch_wkc.sh to recreate it."
+}
+

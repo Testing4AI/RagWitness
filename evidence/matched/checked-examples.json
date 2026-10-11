@@ -1,0 +1,107 @@
+[
+  {
+    "condition": "confirm-000/operation_random/dropped_update",
+    "position": 1,
+    "event_id": "confirm-000-901-confirmation-doc-000-newer",
+    "query": "What is the current refund period for Project A000?",
+    "initial_queried_value": "7 days",
+    "value_presence_in_current_answers": {
+      "antalchemy-deepseek-v4-pro": true,
+      "antalchemy-kimi-k3": true
+    },
+    "recorded_target_answers": {
+      "antalchemy-deepseek-v4-pro": "The approved refund period for Project A000 is 7 days.",
+      "antalchemy-kimi-k3": "The current refund period for Project A000 is **7 days**."
+    },
+    "answer_MR_scores": {
+      "antalchemy-deepseek-v4-pro": 5,
+      "antalchemy-kimi-k3": 5
+    },
+    "actual_evidence_revisions_for_document": [
+      1
+    ],
+    "reference_evidence_revisions_for_document": [
+      2
+    ],
+    "signatures": [
+      {
+        "layer": "index",
+        "document_id": "confirmation-doc-000",
+        "mismatch_kind": "missing_chunk"
+      },
+      {
+        "layer": "index",
+        "document_id": "confirmation-doc-000",
+        "mismatch_kind": "obsolete_version"
+      }
+    ],
+    "boundary": "Value presence is an automatic proxy, not a human gold judgment."
+  },
+  {
+    "condition": "confirm-000/operation_random/orphan_old_chunks",
+    "position": 1,
+    "event_id": "confirm-000-901-confirmation-doc-000-newer",
+    "query": "What is the current refund period for Project A000?",
+    "initial_queried_value": "7 days",
+    "value_presence_in_current_answers": {
+      "antalchemy-deepseek-v4-pro": true,
+      "antalchemy-kimi-k3": true
+    },
+    "recorded_target_answers": {
+      "antalchemy-deepseek-v4-pro": "The current refund period for Project A000 is 7 days.",
+      "antalchemy-kimi-k3": "The current refund period for Project A000 is **7 days** (under policy revision 1)."
+    },
+    "answer_MR_scores": {
+      "antalchemy-deepseek-v4-pro": 5,
+      "antalchemy-kimi-k3": 5
+    },
+    "actual_evidence_revisions_for_document": [
+      1,
+      2
+    ],
+    "reference_evidence_revisions_for_document": [
+      2
+    ],
+    "signatures": [
+      {
+        "layer": "index",
+        "document_id": "confirmation-doc-000",
+        "mismatch_kind": "obsolete_version"
+      }
+    ],
+    "boundary": "Value presence is an automatic proxy, not a human gold judgment."
+  },
+  {
+    "condition": "confirm-000/relation_guided/stale_query_cache",
+    "position": 5,
+    "event_id": "confirm-000-901-confirmation-doc-001-newer",
+    "query": "What is the current refund period for Project A000?",
+    "initial_queried_value": "7 days",
+    "value_presence_in_current_answers": {
+      "antalchemy-deepseek-v4-pro": true,
+      "antalchemy-kimi-k3": true
+    },
+    "recorded_target_answers": {
+      "antalchemy-deepseek-v4-pro": "The approved refund period for Project A000 is 7 days.",
+      "antalchemy-kimi-k3": "The current refund period for Project A000 is **7 days**."
+    },
+    "answer_MR_scores": {
+      "antalchemy-deepseek-v4-pro": 5,
+      "antalchemy-kimi-k3": 5
+    },
+    "actual_evidence_revisions_for_document": [
+      1
+    ],
+    "reference_evidence_revisions_for_document": [
+      1
+    ],
+    "signatures": [
+      {
+        "layer": "cache",
+        "document_id": "confirmation-doc-000",
+        "mismatch_kind": "stale_evidence"
+      }
+    ],
+    "boundary": "Value presence is an automatic proxy, not a human gold judgment."
+  }
+]
